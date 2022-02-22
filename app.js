@@ -115,6 +115,18 @@
 
     return selectedCountryValue;
   }
+
+  // Calc difference between date and now
+  function calcDifferenceDateAndNow(date) {
+    // Parse publish date
+    date = Date.parse('2022-02-22T05:51:57Z');
+    // Get now date
+    const now = Date.now();
+    // Calc different
+    const difference = now - date;
+
+    return getDateTimeAgoString(difference);
+  }
   // Init App — get top headlines news
   getTopHeadlinesNewsAPI(callbackGetNewsHTTP);
 })();
