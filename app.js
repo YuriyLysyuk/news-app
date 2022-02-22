@@ -62,4 +62,24 @@
       get,
     };
   }
+
+  /**
+   * Helpers
+   */
+
+  // Get select country from search form
+  function getSelectCountryValue() {
+    // Get country radio elements and transform it to array
+    const countryEls = [...searchFormEl.elements.country];
+    let selectedCountryValue;
+
+    // Find selected value
+    countryEls.forEach((countryEl) => {
+      if (countryEl.checked) {
+        selectedCountryValue = countryEl.value;
+      }
+    });
+
+    return selectedCountryValue;
+  }
 })();
