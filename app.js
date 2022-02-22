@@ -13,6 +13,22 @@
   const http = new httpRequest();
 
   /**
+   * API functions
+   */
+
+  // Get top headlines news from API
+  function getTopHeadlinesNewsAPI(callback) {
+    // API endpoint
+    const endpoint = '/top-headlines';
+
+    // Build query params
+    const params = {
+      country: getSelectCountryValue(),
+    };
+
+    http.get(endpoint, params, callback);
+  }
+  /**
    * HTTP request
    */
   function httpRequest() {
