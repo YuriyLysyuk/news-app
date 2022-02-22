@@ -127,6 +127,32 @@
 
     return getDateTimeAgoString(difference);
   }
+
+  // Get date time ago string
+  function getDateTimeAgoString(difference) {
+    // In milliseconds
+    const inMilliseconds = {
+      week: 604800000,
+      day: 86400000,
+      hour: 3600000,
+      minute: 60000,
+      second: 1000,
+    };
+
+    let agoStr = '';
+
+    // Сheck the number of full weeks, days, etc.
+    for (let key in inMilliseconds) {
+      let div = Math.floor(difference / inMilliseconds[key]);
+      if (div >= 1) {
+        agoStr = `${div} ${key}s ago`;
+        break;
+      }
+    }
+
+    return agoStr;
+  }
+
   // Init App — get top headlines news
   getTopHeadlinesNewsAPI(callbackGetNewsHTTP);
 })();
