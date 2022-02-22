@@ -98,4 +98,6 @@
 
     return selectedCountryValue;
   }
+  // Init App — get top headlines news
+  getTopHeadlinesNewsAPI(callbackGetNewsHTTP);
 })();
