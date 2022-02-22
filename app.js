@@ -28,6 +28,23 @@
 
     http.get(endpoint, params, callback);
   }
+
+  /**
+   * Callbacks
+   */
+
+  // Get news http callback
+  function callbackGetNewsHTTP(error, response) {
+    // Check error
+    if (error) {
+      console.log(error, response);
+      return;
+    }
+
+    // Render news list
+    renderNewsList(response);
+  }
+
   /**
    * HTTP request
    */
