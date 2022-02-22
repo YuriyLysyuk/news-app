@@ -101,6 +101,19 @@
   }
 
   /**
+   * Render functions
+   */
+
+  // Render news list
+  function renderNewsList({ articles }) {
+    const newsListHtml = articles.reduce((html, article) => {
+      return html + newsItemTemplate(article);
+    }, '');
+
+    newsListEl.innerHTML = '';
+    newsListEl.insertAdjacentHTML('afterbegin', newsListHtml);
+  }
+  /**
    * Helpers
    */
 
