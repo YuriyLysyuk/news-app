@@ -3,3 +3,6 @@
 /**
  * News App — learning project
  **/
+
+(function () {
+})();
