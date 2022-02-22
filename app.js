@@ -1,5 +1,5 @@
 'use strict';
 
 /**
- * News app — learning project
+ * News App — learning project
  **/
