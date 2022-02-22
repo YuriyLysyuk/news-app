@@ -12,6 +12,10 @@
   // HTTP request
   const http = new httpRequest();
 
+  // UI
+  const searchFormEl = document.forms.searchForm;
+  const newsListEl = document.querySelector('.news-list');
+
   /**
    * API functions
    */
