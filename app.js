@@ -303,7 +303,7 @@
   // Calc difference between date and now
   function calcDifferenceDateAndNow(date) {
     // Parse publish date
-    date = Date.parse('2022-02-22T05:51:57Z');
+    date = Date.parse(date);
     // Get now date
     const now = Date.now();
     // Calc different
