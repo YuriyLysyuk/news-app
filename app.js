@@ -44,6 +44,22 @@
       http.get(url, callback);
     }
 
+    function everything(callback) {
+      // Endpoint
+      const endpoint = '/everything';
+
+      // Build query params
+      const params = {
+        q: getSearchQuery(),
+      };
+
+      // Build query URL
+      const url = _buildQueryUrl(endpoint, params);
+
+      // Make request
+      http.get(url, callback);
+    }
+
     function _buildQueryUrl(endpoint, params) {
       let paramsStr = '';
       // If params has anything
