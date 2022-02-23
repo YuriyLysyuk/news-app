@@ -15,6 +15,8 @@
   // UI
   const searchFormEl = document.forms.searchForm;
   const newsListEl = document.querySelector('.news-list');
+  const progressBarEl = document.querySelector('.progress-bar');
+  const progressWrapEl = progressBarEl.parentElement;
 
   /**
    * API functions
@@ -76,6 +78,11 @@
 
         xhr.open(method, url);
 
+        xhr.addEventListener('loadstart', () => {
+          // Reset the progress bar
+          progressBarStatus(0, 100);
+        });
+
         xhr.addEventListener('load', () => {
           if (Math.floor(xhr.status / 100) !== 2) {
             callback(`Error: ${xhr.status}`, xhr);
@@ -83,6 +90,17 @@
           }
           const response = JSON.parse(xhr.responseText);
           callback(null, response);
+
+          // Load complete, show full bar
+          progressBarStatus(100, 100);
+        });
+
+        xhr.addEventListener('progress', (e) => {
+          // If server sent header Content-Length
+          if (e.lengthComputable) {
+            // Show current progress
+            progressBarStatus(e.loaded, e.total);
+          }
         });
 
         xhr.addEventListener('error', () => {
@@ -210,6 +228,33 @@
     }
 
     return agoStr;
+  }
+
+  // Progress bar status
+  function progressBarStatus(now, max) {
+    const width = (now * 100) / max;
+
+    progressBarEl.setAttribute('aria-valuemax', max);
+    progressBarEl.setAttribute('aria-valuenow', now);
+    progressBarEl.style.width = `${width}%`;
+
+    switch (now === max) {
+      // If load complete
+      case true:
+        // Hide bar after 1 second
+        setTimeout(() => {
+          progressWrapEl.classList.add('d-none');
+        }, 1000);
+        break;
+
+      // If load on progress
+      case false:
+        // Make sure the progress bar is visible
+        if (progressWrapEl.classList.contains('d-none')) {
+          progressWrapEl.classList.remove('d-none');
+        }
+        break;
+    }
   }
 
   // Init App — get top headlines news
