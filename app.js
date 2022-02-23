@@ -147,9 +147,6 @@
   function renderNewsList({ totalResults, articles }) {
     newsListEl.innerHTML = '';
 
-    // Set h1 text
-    h1El.textContent = `${getSelectCountryValue().name} today`;
-
     // If total result is empty, show message about
     if (!totalResults) {
       newsListEl.innerHTML = `
@@ -216,6 +213,11 @@
     `;
   }
 
+  // Render h1 text
+  function renderH1Text(searchQuery = '') {
+      h1El.textContent = `${getSelectCountryValue().name} today`;
+  }
+
   /**
    * Event handlers
    */
@@ -226,6 +228,8 @@
 
       // Get top headlines news
       newsService.topHeadlines(callbackGetNewsHTTP);
+      // Render h1 title
+      renderH1Text();
   }
 
   /**
