@@ -137,19 +137,22 @@
     return `
     <div class="col">
       <div class="card">
-        <div class="bg-image hover-overlay ripple">
-          <img
-            src="${article.urlToImage}"
-            class="img-fluid"
-          />
-          <a href="${article.url}" target="_blank">
-            <div
-              class="mask"
-              style="background-color: rgba(251, 251, 251, 0.15)"
-            ></div>
-          </a>
-        </div>
-
+        ${
+          article.urlToImage
+            ? `<div class="bg-image hover-overlay ripple">
+                <img
+                  src="${article.urlToImage}"
+                  class="img-fluid"
+                />
+                <a href="${article.url}" target="_blank">
+                  <div
+                    class="mask"
+                    style="background-color: rgba(251, 251, 251, 0.15)"
+                  ></div>
+                </a>
+              </div>`
+            : ''
+        }
         <div class="card-body">
           <h5 class="card-title">${article.title}</h5>
           ${
