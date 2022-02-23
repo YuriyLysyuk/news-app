@@ -5,10 +5,6 @@
  **/
 
 (function () {
-  // API settings
-  const apiURL = 'https://newsapi.org/v2';
-  const apiKey = '9bce02c8cb67464199bd49b6af983528';
-
   // HTTP request
   const http = new httpRequest();
 
@@ -24,22 +20,52 @@
   searchFormEl.addEventListener('submit', onSubmitSearchFormHandler);
 
   /**
-   * API functions
+   * API service
    */
+  const newsService = (function () {
+    // API settings
+    const apiURL = 'https://newsapi.org/v2';
+    const apiKey = '9bce02c8cb67464199bd49b6af983528';
 
-  // Get top headlines news from API
-  function getTopHeadlinesNewsAPI(callback) {
-    // API endpoint
-    const endpoint = '/top-headlines';
+    // Get top headlines news from API
+    function topHeadlines(callback) {
+      // Endpoint
+      const endpoint = '/top-headlines';
 
-    // Build query params
-    const params = {
-      country: getSelectCountryValue().code,
-      q: getSearchQuery(),
+      // Build query params
+      const params = {
+        country: getSelectCountryValue().code,
+      };
+
+      // Build query URL
+      const url = _buildQueryUrl(endpoint, params);
+
+      // Make request
+      http.get(url, callback);
+    }
+
+    function _buildQueryUrl(endpoint, params) {
+      let paramsStr = '';
+      // If params has anything
+      if (Object.keys(params)) {
+        // Append params to url
+        for (let key in params) {
+          // If value not empty
+          if (params[key]) {
+            // Add param to url
+            paramsStr += `&${key}=${params[key]}`;
+          }
+        }
+      }
+
+      return `${apiURL}${endpoint}?apiKey=${apiKey}${paramsStr}`;
+    }
+
+    return {
+      topHeadlines,
+      everything,
     };
-
-    http.get(endpoint, params, callback);
-  }
+  })();
 
   /**
    * Callbacks
@@ -62,28 +88,13 @@
    */
   function httpRequest() {
     // Get from API
-    function get(endpoint, params, callback) {
-      _makeRequest('GET', endpoint, params, callback);
+    function get(url, callback) {
+      _makeRequest('GET', url, callback);
     }
 
     // Make request
-    function _makeRequest(method, endpoint, params = {}, callback) {
+    function _makeRequest(method, url, callback) {
       try {
-        // Prepare url
-        let url = `${apiURL}${endpoint}?apiKey=${apiKey}`;
-
-        // If has url params
-        if (Object.keys(params)) {
-          // Append params to url
-          for (let key in params) {
-            // If value not empty
-            if (params[key]) {
-              // Add param to url
-              url += `&${key}=${params[key]}`;
-            }
-          }
-        }
-
         const xhr = new XMLHttpRequest();
 
         xhr.open(method, url);
@@ -213,8 +224,8 @@
   function onSubmitSearchFormHandler(e) {
     e.preventDefault();
 
-    // Get top headlines news
-    getTopHeadlinesNewsAPI(callbackGetNewsHTTP);
+      // Get top headlines news
+      newsService.topHeadlines(callbackGetNewsHTTP);
   }
 
   /**
@@ -308,5 +319,5 @@
   }
 
   // Init App — get top headlines news
-  getTopHeadlinesNewsAPI(callbackGetNewsHTTP);
+  newsService.topHeadlines(callbackGetNewsHTTP);
 })();
