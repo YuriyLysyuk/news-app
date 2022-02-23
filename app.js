@@ -182,6 +182,18 @@
   }
 
   /**
+   * Event handlers
+   */
+
+  // On submit search form handler
+  function onSubmitSearchFormHandler(e) {
+    e.preventDefault();
+
+    // Get top headlines news
+    getTopHeadlinesNewsAPI(callbackGetNewsHTTP);
+  }
+
+  /**
    * Helpers
    */
 
