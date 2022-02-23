@@ -75,7 +75,11 @@
         if (Object.keys(params)) {
           // Append params to url
           for (let key in params) {
-            url += `&${key}=${params[key]}`;
+            // If value not empty
+            if (params[key]) {
+              // Add param to url
+              url += `&${key}=${params[key]}`;
+            }
           }
         }
 
