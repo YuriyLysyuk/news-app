@@ -13,6 +13,7 @@
   const http = new httpRequest();
 
   // UI
+  const h1El = document.querySelector('h1');
   const searchFormEl = document.forms.searchForm;
   const searchFormQueryEl = searchFormEl.elements.query;
   const newsListEl = document.querySelector('.news-list');
@@ -33,7 +34,7 @@
 
     // Build query params
     const params = {
-      country: getSelectCountryValue(),
+      country: getSelectCountryValue().code,
       q: getSearchQuery(),
     };
 
@@ -135,6 +136,9 @@
   function renderNewsList({ totalResults, articles }) {
     newsListEl.innerHTML = '';
 
+    // Set h1 text
+    h1El.textContent = `${getSelectCountryValue().name} today`;
+
     // If total result is empty, show message about
     if (!totalResults) {
       newsListEl.innerHTML = `
@@ -221,12 +225,13 @@
   function getSelectCountryValue() {
     // Get country radio elements and transform it to array
     const countryEls = [...searchFormEl.elements.country];
-    let selectedCountryValue;
+    const selectedCountryValue = {};
 
     // Find selected value
     countryEls.forEach((countryEl) => {
       if (countryEl.checked) {
-        selectedCountryValue = countryEl.value;
+        selectedCountryValue.code = countryEl.value;
+        selectedCountryValue.name = countryEl.dataset.countryName;
       }
     });
 
