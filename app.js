@@ -231,7 +231,11 @@
 
   // Render h1 text
   function renderH1Text(searchQuery = '') {
+    if (searchQuery) {
+      h1El.textContent = `Search results for: ${searchQuery}`;
+    } else {
       h1El.textContent = `${getSelectCountryValue().name} today`;
+    }
   }
 
   /**
@@ -242,10 +246,19 @@
   function onSubmitSearchFormHandler(e) {
     e.preventDefault();
 
+    const searchQuery = getSearchQuery();
+    // If has user query
+    if (searchQuery) {
+      // Search news from everything
+      newsService.everything(callbackGetNewsHTTP);
+      // Render h1 title
+      renderH1Text(searchQuery);
+    } else {
       // Get top headlines news
       newsService.topHeadlines(callbackGetNewsHTTP);
       // Render h1 title
       renderH1Text();
+    }
   }
 
   /**
