@@ -18,6 +18,9 @@
   const progressBarEl = document.querySelector('.progress-bar');
   const progressWrapEl = progressBarEl.parentElement;
 
+  // Events
+  searchFormEl.addEventListener('submit', onSubmitSearchFormHandler);
+
   /**
    * API functions
    */
