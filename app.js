@@ -160,7 +160,12 @@
               ? `<h6 class="card-subtitle mb-2 text-muted">by ${article.author}</h6>`
               : ''
           }
-          <p class="card-text">${article.description}</p>
+          ${
+            article.description
+              ? `<p class="card-text">${article.description}</p>`
+              : ''
+          }
+          
 
           <a href="${
             article.url
