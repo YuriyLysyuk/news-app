@@ -250,12 +250,12 @@
     // If has user query
     if (searchQuery) {
       // Search news from everything
-      newsService.everything(callbackGetNewsHTTP);
+      loadNews('everything');
       // Render h1 title
       renderH1Text(searchQuery);
     } else {
       // Get top headlines news
-      newsService.topHeadlines(callbackGetNewsHTTP);
+      loadNews('topHeadlines');
       // Render h1 title
       renderH1Text();
     }
@@ -264,6 +264,16 @@
   /**
    * Helpers
    */
+
+  // Load news
+  function loadNews(service = '') {
+    if (!service) {
+      console.error('Service is not defined');
+      return;
+    }
+    // Load selected news: topHeadlines or everything
+    newsService[service](callbackGetNewsHTTP);
+  }
 
   // Get select country from search form
   function getSelectCountryValue() {
