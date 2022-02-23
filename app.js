@@ -14,6 +14,7 @@
 
   // UI
   const searchFormEl = document.forms.searchForm;
+  const searchFormQueryEl = searchFormEl.elements.query;
   const newsListEl = document.querySelector('.news-list');
   const progressBarEl = document.querySelector('.progress-bar');
   const progressWrapEl = progressBarEl.parentElement;
@@ -33,6 +34,7 @@
     // Build query params
     const params = {
       country: getSelectCountryValue(),
+      q: getSearchQuery(),
     };
 
     http.get(endpoint, params, callback);
@@ -214,6 +216,11 @@
     });
 
     return selectedCountryValue;
+  }
+
+  // Get search query
+  function getSearchQuery() {
+    return searchFormQueryEl.value;
   }
 
   // Calc difference between date and now
