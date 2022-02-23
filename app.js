@@ -18,6 +18,9 @@
 
   // Events
   searchFormEl.addEventListener('submit', onSubmitSearchFormHandler);
+  document.addEventListener('DOMContentLoaded', () => {
+    loadNews('topHeadlines');
+  });
 
   /**
    * API service
@@ -360,7 +363,4 @@
         break;
     }
   }
-
-  // Init App — get top headlines news
-  newsService.topHeadlines(callbackGetNewsHTTP);
 })();
