@@ -132,12 +132,23 @@
    */
 
   // Render news list
-  function renderNewsList({ articles }) {
+  function renderNewsList({ totalResults, articles }) {
+    newsListEl.innerHTML = '';
+
+    // If total result is empty, show message about
+    if (!totalResults) {
+      newsListEl.innerHTML = `
+        <p class="note note-warning">
+          Nothing was found for the query <strong>${getSearchQuery()}</strong>, try changing the query.
+        </p>
+      `;
+      return;
+    }
+
     const newsListHtml = articles.reduce((html, article) => {
       return html + newsItemTemplate(article);
     }, '');
 
-    newsListEl.innerHTML = '';
     newsListEl.insertAdjacentHTML('afterbegin', newsListHtml);
   }
 
