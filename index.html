@@ -43,134 +43,186 @@
             <h5 class="card-header">Search news</h5>
             <div class="card-body">
               <form name="searchForm">
-                <div class="form-helper mb-1">Select country</div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="country"
-                    id="ru"
-                    value="ru"
-                    data-country-name="Russia"
-                    checked
-                  />
-                  <label class="form-check-label" for="ru">Russia</label>
-                </div>
+                <ul class="nav nav-pills nav-justified mb-3">
+                  <li class="nav-item">
+                    <a
+                      class="nav-link active"
+                      id="tab-top-headlines"
+                      data-mdb-toggle="pill"
+                      href="#pills-top-headlines"
+                      role="tab"
+                      aria-controls="pills-top-headlines"
+                      aria-selected="true"
+                      >Top headlines</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link"
+                      id="tab-everything"
+                      data-mdb-toggle="pill"
+                      href="#pills-everything"
+                      role="tab"
+                      aria-controls="pills-everything"
+                      aria-selected="false"
+                      >User query</a
+                    >
+                  </li>
+                </ul>
+                <!-- Pills navs -->
 
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="country"
-                    id="us"
-                    value="us"
-                    data-country-name="USA"
-                  />
-                  <label class="form-check-label" for="us">USA</label>
-                </div>
-
-                <div class="form-helper mt-3 mb-1">Select category</div>
-
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="category"
-                    id="general"
-                    value="general"
-                    data-country-name="General"
-                    checked
-                  />
-                  <label class="form-check-label" for="general">General</label>
-                </div>
-
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="category"
-                    id="business"
-                    value="business"
-                    data-country-name="Business"
-                  />
-                  <label class="form-check-label" for="business"
-                    >Business</label
+                <!-- Pills content -->
+                <div class="tab-content">
+                  <div
+                    class="tab-pane fade show active"
+                    id="pills-top-headlines"
+                    role="tabpanel"
+                    aria-labelledby="tab-top-headlines"
                   >
-                </div>
+                    <div class="form-helper mb-1">Select country</div>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="country"
+                        id="ru"
+                        value="ru"
+                        data-country-name="Russia"
+                        checked
+                      />
+                      <label class="form-check-label" for="ru">Russia</label>
+                    </div>
 
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="category"
-                    id="entertainment"
-                    value="entertainment"
-                    data-country-name="Entertainment"
-                  />
-                  <label class="form-check-label" for="entertainment"
-                    >Entertainment</label
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="country"
+                        id="us"
+                        value="us"
+                        data-country-name="USA"
+                      />
+                      <label class="form-check-label" for="us">USA</label>
+                    </div>
+
+                    <div class="form-helper mt-3 mb-1">Select category</div>
+
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="category"
+                        id="general"
+                        value="general"
+                        data-country-name="General"
+                        checked
+                      />
+                      <label class="form-check-label" for="general"
+                        >General</label
+                      >
+                    </div>
+
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="category"
+                        id="business"
+                        value="business"
+                        data-country-name="Business"
+                      />
+                      <label class="form-check-label" for="business"
+                        >Business</label
+                      >
+                    </div>
+
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="category"
+                        id="entertainment"
+                        value="entertainment"
+                        data-country-name="Entertainment"
+                      />
+                      <label class="form-check-label" for="entertainment"
+                        >Entertainment</label
+                      >
+                    </div>
+
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="category"
+                        id="health"
+                        value="health"
+                        data-country-name="Health"
+                      />
+                      <label class="form-check-label" for="health"
+                        >Health</label
+                      >
+                    </div>
+
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="category"
+                        id="science"
+                        value="science"
+                        data-country-name="Science"
+                      />
+                      <label class="form-check-label" for="science"
+                        >Science</label
+                      >
+                    </div>
+
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="category"
+                        id="sports"
+                        value="sports"
+                        data-country-name="Sports"
+                      />
+                      <label class="form-check-label" for="sports"
+                        >Sports</label
+                      >
+                    </div>
+
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="category"
+                        id="technology"
+                        value="technology"
+                        data-country-name="Technology"
+                      />
+                      <label class="form-check-label" for="technology"
+                        >Technology</label
+                      >
+                    </div>
+                  </div>
+                  <div
+                    class="tab-pane fade"
+                    id="pills-everything"
+                    role="tabpanel"
+                    aria-labelledby="tab-everything"
                   >
-                </div>
-
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="category"
-                    id="health"
-                    value="health"
-                    data-country-name="Health"
-                  />
-                  <label class="form-check-label" for="health">Health</label>
-                </div>
-
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="category"
-                    id="science"
-                    value="science"
-                    data-country-name="Science"
-                  />
-                  <label class="form-check-label" for="science">Science</label>
-                </div>
-
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="category"
-                    id="sports"
-                    value="sports"
-                    data-country-name="Sports"
-                  />
-                  <label class="form-check-label" for="sports">Sports</label>
-                </div>
-
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="category"
-                    id="technology"
-                    value="technology"
-                    data-country-name="Technology"
-                  />
-                  <label class="form-check-label" for="technology"
-                    >Technology</label
-                  >
-                </div>
-
-                <div class="form-outline mt-3">
-                  <input
-                    class="form-control"
-                    type="text"
-                    name="query"
-                    id="query"
-                    value=""
-                  />
-                  <label class="form-label" for="query">Type query</label>
+                    <div class="form-outline mt-3">
+                      <input
+                        class="form-control"
+                        type="text"
+                        name="query"
+                        id="query"
+                        value=""
+                      />
+                      <label class="form-label" for="query">Type query</label>
+                    </div>
+                  </div>
                 </div>
 
                 <button type="submit" class="btn btn-primary mt-3">
