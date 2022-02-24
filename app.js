@@ -17,6 +17,8 @@
   const progressWrapEl = progressBarEl.parentElement;
   // Get country radio elements and transform it to array
   const searchFormCountryEls = [...searchFormEl.elements.country];
+  // Get category radio elements and transform it to array
+  const searchFormCategoryEls = [...searchFormEl.elements.category];
 
   // Events
   searchFormEl.addEventListener('submit', onSubmitSearchFormHandler);
@@ -40,6 +42,7 @@
       // Build query params
       const params = {
         country: getSelectedCountryValue().code,
+        category: getSelectedCategoryValue().category,
       };
 
       // Build query URL
@@ -293,6 +296,20 @@
     });
 
     return selectedCountryValue;
+  }
+
+  // Get selected category from search form
+  function getSelectedCategoryValue() {
+    const selectedCategoryValue = {};
+
+    // Find selected value
+    searchFormCategoryEls.forEach((categoryEl) => {
+      if (categoryEl.checked) {
+        selectedCategoryValue.category = categoryEl.value;
+      }
+    });
+
+    return selectedCategoryValue;
   }
 
   // Get search query
