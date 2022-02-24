@@ -15,6 +15,8 @@
   const newsListEl = document.querySelector('.news-list');
   const progressBarEl = document.querySelector('.progress-bar');
   const progressWrapEl = progressBarEl.parentElement;
+  // Get country radio elements and transform it to array
+  const searchFormCountryEls = [...searchFormEl.elements.country];
 
   // Events
   searchFormEl.addEventListener('submit', onSubmitSearchFormHandler);
@@ -37,7 +39,7 @@
 
       // Build query params
       const params = {
-        country: getSelectCountryValue().code,
+        country: getSelectedCountryValue().code,
       };
 
       // Build query URL
@@ -237,7 +239,7 @@
     if (searchQuery) {
       h1El.textContent = `Search results for: ${searchQuery}`;
     } else {
-      h1El.textContent = `${getSelectCountryValue().name} today`;
+      h1El.textContent = `${getSelectedCountryValue().name} today`;
     }
   }
 
@@ -278,14 +280,12 @@
     newsService[service](callbackGetNewsHTTP);
   }
 
-  // Get select country from search form
-  function getSelectCountryValue() {
-    // Get country radio elements and transform it to array
-    const countryEls = [...searchFormEl.elements.country];
+  // Get selected country from search form
+  function getSelectedCountryValue() {
     const selectedCountryValue = {};
 
     // Find selected value
-    countryEls.forEach((countryEl) => {
+    searchFormCountryEls.forEach((countryEl) => {
       if (countryEl.checked) {
         selectedCountryValue.code = countryEl.value;
         selectedCountryValue.name = countryEl.dataset.countryName;
