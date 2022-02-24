@@ -19,12 +19,18 @@
   const searchFormCountryEls = [...searchFormEl.elements.country];
   // Get category radio elements and transform it to array
   const searchFormCategoryEls = [...searchFormEl.elements.category];
+  const searchFormTabsEl = searchFormEl.querySelector('.nav-pills');
+  const searchFormTabTopHeadlinesEl =
+    searchFormTabsEl.querySelector('#tab-top-headlines');
+  const searchFormTabUserQueryEl =
+    searchFormTabsEl.querySelector('#tab-user-query');
 
   // Events
   searchFormEl.addEventListener('submit', onSubmitSearchFormHandler);
   document.addEventListener('DOMContentLoaded', () => {
     loadNews('topHeadlines');
   });
+  searchFormTabsEl.addEventListener('click', onClickSearchFormTabsHandler);
 
   /**
    * API service
@@ -266,6 +272,18 @@
       loadNews('topHeadlines');
       // Render h1 title
       renderH1Text();
+    }
+  }
+
+  // On click search form tabs handler
+  function onClickSearchFormTabsHandler(e) {
+    // If click on tabs
+    if (e.target.classList.contains('nav-link')) {
+      // If click on top headlines tab
+      if (e.target.id === 'tab-top-headlines') {
+        // Clear search form query
+        searchFormQueryEl.value = '';
+      }
     }
   }
 
