@@ -20,10 +20,6 @@
   // Get category radio elements and transform it to array
   const searchFormCategoryEls = [...searchFormEl.elements.category];
   const searchFormTabsEl = searchFormEl.querySelector('.nav-pills');
-  const searchFormTabTopHeadlinesEl =
-    searchFormTabsEl.querySelector('#tab-top-headlines');
-  const searchFormTabUserQueryEl =
-    searchFormTabsEl.querySelector('#tab-user-query');
 
   // Events
   searchFormEl.addEventListener('submit', onSubmitSearchFormHandler);
