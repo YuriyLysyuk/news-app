@@ -33,7 +33,8 @@
    */
   const newsService = (function () {
     // API settings
-    const apiURL = 'https://newsapi.org/v2';
+    // const apiURL = 'https://newsapi.org/v2'; // for paid plans
+    const apiURL = 'https://news-api-v2.herokuapp.com'; // for demo
     const apiKey = '9bce02c8cb67464199bd49b6af983528';
 
     // Get top headlines news from API
