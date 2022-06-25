@@ -2,7 +2,7 @@
 
 Учебный проект новостного приложения.
 
-[Демо](https://news.yuriylysyuk.com)
+[Демо](https://yuriylysyuk.github.io/news-app/)
 
 PS: Newsapi.org на тарифе для разработчиков не позволяет обращаться к API с любого адреса, отличного от localhost. Поэтому в демке адрес API изменен на https://news-api-v2.herokuapp.com, который отдает новости только по USA. Выбор России не доступен.
 
